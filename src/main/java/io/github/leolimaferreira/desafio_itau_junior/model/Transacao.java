@@ -2,6 +2,7 @@ package io.github.leolimaferreira.desafio_itau_junior.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import lombok.Data;
 
@@ -9,5 +10,5 @@ import lombok.Data;
 public class Transacao {
 	
 	private BigDecimal valor;
-	private LocalDateTime dataHora;
+	private OffsetDateTime dataHora;
 }

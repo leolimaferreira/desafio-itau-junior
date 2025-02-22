@@ -7,10 +7,7 @@ import io.github.leolimaferreira.desafio_itau_junior.service.TransacaoService;
 import jakarta.validation.Valid;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -20,7 +17,7 @@ import java.net.URI;
  @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/transacoes")
+@RequestMapping("/transacao")
 public class TransacaoController {
 
     private final TransacaoMapper mapper;
@@ -36,5 +33,11 @@ public class TransacaoController {
                 .buildAndExpand(transacaoToSave.getValor())
                 .toUri();
         return ResponseEntity.created(location).build();
+    }
+
+    @DeleteMapping
+     public ResponseEntity<Void> deletar() {
+        transacaoService.deletarTransacoes();
+        return ResponseEntity.ok().build();
     }
 }
