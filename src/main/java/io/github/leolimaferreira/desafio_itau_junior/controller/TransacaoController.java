@@ -49,7 +49,11 @@ public class TransacaoController {
 
     @DeleteMapping
     @Operation(summary = "Limpar Transações", description = "Deletar todas as transações salvas")
-    @ApiResponse(responseCode = "200", description = "Deletadas com sucesso")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Deletadas com sucesso"),
+            @ApiResponse(responseCode = "400", description = "Requisição fora dos padrões."),
+            @ApiResponse(responseCode = "500", description = "Erro interno.")
+    })
      public ResponseEntity<Void> deletar() {
         transacaoService.deletarTransacoes();
         return ResponseEntity.ok().build();

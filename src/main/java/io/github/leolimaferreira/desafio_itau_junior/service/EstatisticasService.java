@@ -19,7 +19,12 @@ public class EstatisticasService {
 
     public EstatisticasDTO calcularEstatisticasTransacoes(Integer intervaloBusca) {
         log.info("Buscando estatísticas das transações nos ultimos " + intervaloBusca + " segundos.");
+
         List<Transacao> transacaos = transacaoService.buscarTransacoes(intervaloBusca);
+
+        if (transacaos.isEmpty()){
+            return  new EstatisticasDTO(0L, 0.0, 0.0, 0.0, 0.0);
+        }
 
         DoubleSummaryStatistics estatisticas = transacaos.stream().mapToDouble(Transacao::getValor).summaryStatistics();
 
