@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/estatisticas")
+@RequestMapping("/estatistica")
 @Tag(name = "Estatisticas")
 public class EstatisticasController {
 
